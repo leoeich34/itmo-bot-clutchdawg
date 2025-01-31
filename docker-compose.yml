@@ -1,11 +1,13 @@
+version: '3.8'
+
 services:
   itmo_bot_service:
     build: .
     container_name: itmo_bot
     ports:
       - "8000:8000"
+    env_file:
+      - .env
     environment:
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
-      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
-      - GOOGLE_CSE_ID=${GOOGLE_CSE_ID}
+      - HF_TOKEN=${HF_TOKEN}
     restart: unless-stopped
